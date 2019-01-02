@@ -235,18 +235,18 @@ module NfePaulistana
         xml.InscricaoMunicipalTomador data[:im_tomador] unless data[:im_tomador].blank?
         xml.InscricaoEstadualTomador data[:ie_tomador] unless data[:ie_tomador].blank?
         xml.RazaoSocialTomador data[:razao_tomador] unless data[:razao_tomador].blank?
-        unless (data[:tp_logradouro].blank? and data[:logradouro].blank? and data[:nr_endereco] and data[:compl_endereco])
-          xml.EnderecoTomador {
+        xml.EnderecoTomador {
+          unless (data[:tp_logradouro].blank? and data[:logradouro].blank? and data[:nr_endereco] and data[:compl_endereco])
             xml.TipoLogradouro data[:tp_logradouro]
             xml.Logradouro data[:logradouro]
             xml.NumeroEndereco data[:nr_endereco]
             xml.ComplementoEndereco data[:compl_endereco]
             xml.Bairro data[:bairro] unless data[:bairro].blank?
-            xml.Cidade data[:cidade] unless data[:cidade].blank?
-            xml.UF data[:uf] unless data[:uf]
-            xml.CEP data[:cep] unless data[:cep]
-          }
-        end
+          end
+          xml.CEP data[:cep] unless data[:cep]
+          xml.Cidade data[:cidade] unless data[:cidade].blank?
+          xml.UF data[:uf] unless data[:uf]
+        }
         xml.EmailTomador data[:email_tomador]
 =begin
         unless (data[:cpf_intermediario].blank? and data[:cnpj_intermediario].blank?)
