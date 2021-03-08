@@ -19,8 +19,8 @@ module NfePaulistana
     def initialize(options = {})
       @options = {
         ssl_cert_p12_path: "",
-        ssl_cert_path: "", 
-        ssl_key_path: "", 
+        ssl_cert_path: "",
+        ssl_key_path: "",
         ssl_cert_pass: "",
         wsdl: 'https://nfe.prefeitura.sp.gov.br/ws/lotenfe.asmx?wsdl'
       }.merge(options)
@@ -84,12 +84,14 @@ module NfePaulistana
 
     def get_client
       Savon.client(env_namespace: :soap,
-                   ssl_verify_mode: :peer, 
-                   ssl_cert_file: @options[:ssl_cert_path], 
-                   ssl_cert_key_file: @options[:ssl_key_path], 
-                   ssl_cert_key_password: @options[:ssl_cert_pass], 
-                   wsdl: @options[:wsdl], 
-                   namespace_identifier: nil)
+                   ssl_verify_mode: :peer,
+                   ssl_cert_file: @options[:ssl_cert_path],
+                   ssl_cert_key_file: @options[:ssl_key_path],
+                   ssl_cert_key_password: @options[:ssl_cert_pass],
+                   wsdl: @options[:wsdl],
+                   namespace_identifier: nil,
+                   open_timeout: (@options[:open_timeout] || 300),
+                   read_timeout: (@options[:read_timeout] || 300)
     end
   end
 end
