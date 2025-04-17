@@ -18,8 +18,8 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "nokogiri", ">= 1.6"
-  s.add_dependency "savon", "~> 2.11"
+  s.add_dependency "nokogiri", ">= 1.9.1"
+  s.add_dependency "savon", ">= 2.12"
   s.add_dependency "signer"
 
   s.add_development_dependency "rake"
