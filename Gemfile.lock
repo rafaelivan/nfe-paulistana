@@ -3,7 +3,7 @@ PATH
   specs:
     nfe-paulistana (1.0.5)
       nokogiri (>= 1.9.1)
-      savon (>= 2.12)
+      savon (>= 2.15.1)
       signer
 
 GEM
