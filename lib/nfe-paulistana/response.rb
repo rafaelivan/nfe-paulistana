@@ -21,7 +21,7 @@ module NfePaulistana
     end
 
     def retorno
-      Nori.new(:convert_tags_to => lambda { |tag| tag.snakecase.to_sym }).parse(xml)[("retorno_" + (RETURN_ROOT[@options[:method]] || @options[:method]).to_s).to_sym]
+      Nori.new(:convert_tags_to => lambda { |tag| tag.underscore.to_sym }).parse(xml)[("retorno_" + (RETURN_ROOT[@options[:method]] || @options[:method]).to_s).to_sym]
     end
 
     def success?
