@@ -78,7 +78,7 @@ module NfePaulistana
       message = XmlBuilder.new.xml_for(method, data, certificado)
       response = client.call(method, message: message)
       method_response = (method.to_s + "_response").to_sym
-      Response.new(xml: response.hash[:envelope][:body][method_response][:retorno_xml], method: method)
+      Response.new(xml: response.full_hash[:envelope][:body][method_response][:retorno_xml], method: method)
     rescue Savon::Error
     end
 
